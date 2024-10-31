@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity //Cada campo añadido es una columna en BBDD
@@ -20,6 +22,11 @@ public class Tareas {
     private Date fecha_fin;
     private Boolean entregado_a_tiempo;
     private Date fecha_estimada;
+    
+    //Relación muchos a uno con empleado
+    @ManyToOne
+    @JoinColumn (name = "empleado_id") //Clave foránea
+    private Empleado empleado;
     
     //Getters y setters 
     public Long getId() {
